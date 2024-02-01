@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +29,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'name' => ['required' , 'max:255'],
+            'email' => ['required' , 'email' , 'max:255', 'unique:customers'],
+            'phone' => ['required', 'max:14' , 'min:10' , 'unique:customers'],
+        ]);
+
+        Customer::create($validation);
+
+        return redirect()->route('customers.index');
     }
 
     /**

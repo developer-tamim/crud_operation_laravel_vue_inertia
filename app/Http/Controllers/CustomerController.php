@@ -13,7 +13,16 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return inertia::render('index', [
+            'customers' => Customer::all()->map(function($customer){
+                return [
+                    'id' => $customer->id,
+                    'name' => $customer->name,
+                    'email' => $customer->email,
+                    'phone' => $customer->phone,
+                ];
+            }),
+        ]);
     }
 
     /**
@@ -29,13 +38,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = $request->validate([
+        $validateData = $request->validate([
             'name' => ['required' , 'max:255'],
             'email' => ['required' , 'email' , 'max:255', 'unique:customers'],
             'phone' => ['required', 'max:14' , 'min:10' , 'unique:customers'],
         ]);
 
-        Customer::create($validation);
+        Customer::create($validateData);
 
         return redirect()->route('customers.index');
     }

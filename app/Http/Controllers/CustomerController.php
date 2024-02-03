@@ -44,9 +44,11 @@ class CustomerController extends Controller
             'phone' => ['required', 'max:14' , 'min:10' , 'unique:customers'],
         ]);
 
-        Customer::create($validateData);
+        $customer = Customer::create($validateData);
 
-        return redirect()->route('customers.index');
+        // return redirect()->route('customers.index');
+        return response()->json(['message' => 'Customer created successfully', 'data' => $customer]);
+
     }
 
     /**
@@ -76,8 +78,10 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect()->route('customers.index');
     }
 }

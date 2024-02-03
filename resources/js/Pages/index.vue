@@ -1,5 +1,14 @@
 <script setup>
     defineProps({customers: Object})
+    import { router } from "@inertiajs/vue3";
+    import { Inertia } from "@inertiajs/inertia";
+
+
+
+    function destroy(id) {
+        // router.delete('customers/' + id)
+        Inertia.delete(`/customers/${id}`);
+    }
 </script>
 
 <template>
@@ -20,7 +29,7 @@
                         <td>
                             <a href="" class="btn text-info me-1"><i class="fa-regular fa-eye"></i></a>
                             <a href="" class="btn text-primary me-1"><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href="" class="btn text-danger"><i class="fa-regular fa-trash-can"></i></a>
+                            <a href="" @click.prevent="destroy(customer.id)" class="btn text-danger"><i class="fa-regular fa-trash-can"></i></a>
                         </td>
                     </tr>
                 </tbody>

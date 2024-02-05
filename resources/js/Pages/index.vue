@@ -17,14 +17,14 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <!-- <th>#</th> -->
                         <th>Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="customer in customers" :key="customer.id">
-                        <th>{{ customer.id }}</th>
+                        <!-- <th>{{ customer.id }}</th> -->
                         <td>{{ customer.name }}</td>
                         <td>
                             <a href="" class="btn text-info me-1"><i class="fa-regular fa-eye"></i></a>

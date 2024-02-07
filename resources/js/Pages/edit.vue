@@ -38,70 +38,13 @@ function submit() {
 }
 </script>
 
+
 <template>
     <div>
         <div class="card mt-5">
             <div class="card-header">Create Form</div>
             <div class="card-body">
-                <form @submit.prevent="submit">
-                    <!-- @csrf -->
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Name</label
-                        >
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            v-model="form.name"
-                            class="form-control"
-                        />
-                        <div
-                            v-if="form.errors.name"
-                            class="text-danger text-xs"
-                        >
-                            {{ form.errors.name[0] }}
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Email address</label
-                        >
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            v-model="form.email"
-                            class="form-control"
-                        />
-                        <div
-                            v-if="form.errors.email"
-                            class="text-danger text-xs"
-                        >
-                            {{ form.errors.email[0] }}
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label"
-                            >Phone</label
-                        >
-                        <input
-                            type="number"
-                            id="phone"
-                            name="phone"
-                            v-model="form.phone"
-                            class="form-control"
-                        />
-                        <div
-                            v-if="form.errors.phone"
-                            class="text-danger text-xs"
-                        >
-                            {{ form.errors.phone[0] }}
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+               <!-- this code should be change -->
             </div>
         </div>
     </div>
